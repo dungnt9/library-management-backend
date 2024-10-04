@@ -36,6 +36,6 @@ class ReaderController extends Controller
     public function destroy(Reader $reader)
     {
         $reader->delete();
-        return response()->json(null, 204);
+        return response()->json(['message' => 'Reader soft deleted successfully']);
     }
 }

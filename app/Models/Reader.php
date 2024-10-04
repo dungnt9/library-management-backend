@@ -4,6 +4,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Reader extends Model
 {
@@ -14,4 +15,6 @@ class Reader extends Model
     {
         return $this->hasMany(BookBorrowOrder::class, 'reader_id');
     }
+
+    use SoftDeletes;
 }

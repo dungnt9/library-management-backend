@@ -88,9 +88,8 @@ class BookBorrowOrderController extends Controller
 
     public function destroy(BookBorrowOrder $order)
     {
-        $order->detailedBorrowOrders()->delete();
         $order->delete();
-        return response()->json(null, 204);
+        return response()->json(['message' => 'BookBorrowOrder soft deleted successfully']);
     }
 
     public function returnBook(DetailedBorrowOrder $detailedBorrowOrder)
