@@ -1,6 +1,5 @@
 <?php
 
-// app/Models/BookBorrowOrder.php
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;

@@ -1,6 +1,5 @@
 <?php
 
-// app/Models/DetailedBorrowOrder.php
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
