@@ -86,8 +86,9 @@ class BookBorrowOrderController extends Controller
         }
     }
 
-    public function destroy(BookBorrowOrder $order)
+    public function destroy($id)
     {
+        $order = BookBorrowOrder::findOrFail($id);
         $order->delete();
         return response()->json(['message' => 'BookBorrowOrder soft deleted successfully']);
     }

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('reader_id')->constrained('readers', 'reader_id');
             $table->date('order_date');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
