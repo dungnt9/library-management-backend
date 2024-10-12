@@ -20,7 +20,7 @@ class BookBorrowOrderController extends Controller
             'reader_id' => 'required|exists:readers,reader_id',
             'order_date' => 'required|date',
             'books' => 'required|array',
-            'books.*.book_id' => 'required|exists:books,book_id',
+            'books.*.book_id' => 'required|exists:books,book_id',    //xác thực cho từng phần tử trong mảng
             'books.*.return_date' => 'nullable|date',
         ]);
 
@@ -31,13 +31,13 @@ class BookBorrowOrderController extends Controller
 
         foreach ($request->books as $book) {
             DetailedBorrowOrder::create([
-                'order_id' => $order->order_id,
-                'book_id' => $book['book_id'],
+                'order_id' => $order->order_id,  //được tự động sinh
+                'book_id' => $book['book_id'],   //sách cụ thể lấy từ mảng books trong request
                 'return_date' => $book['return_date'] ?? null,
             ]);
         }
 
-        return $order->load('reader', 'detailedBorrowOrders.book');
+        return $order->load('reader', 'detailedBorrowOrders.book'); //lấy dữ liệu liên quan và gán vào các thuộc tính của đối tượng $order.
     }
 
     public function show(BookBorrowOrder $order)
